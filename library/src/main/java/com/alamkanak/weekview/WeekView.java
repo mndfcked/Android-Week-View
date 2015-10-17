@@ -567,7 +567,7 @@ public class WeekView extends View {
                     float startY = mHeaderTextHeight + mHeaderRowPadding * 2 + mTimeTextHeight/2 + mHeaderMarginBottom + mCurrentOrigin.y;
 
                     if(sameDay){
-                        Calendar now = Calendar.getInstance();
+                        Calendar now = Calendar.getInstance(Locale.getDefault());
                         float beforeNow = (now.get(Calendar.HOUR_OF_DAY)+now.get(Calendar.MINUTE)/60.0f)*mHourHeight;
                         canvas.drawRect(start, startY, startPixel + mWidthPerDay, startY+beforeNow, pastPaint);
                         canvas.drawRect(start, startY+beforeNow, startPixel + mWidthPerDay, getHeight(), futurePaint);
@@ -603,7 +603,7 @@ public class WeekView extends View {
             //Draw the line at the current time
             if(mUseNewColoring && sameDay){
                 float startY = mHeaderTextHeight + mHeaderRowPadding * 2 + mTimeTextHeight/2 + mHeaderMarginBottom + mCurrentOrigin.y;
-                Calendar now = Calendar.getInstance();
+                Calendar now = Calendar.getInstance(Locale.getDefault());
                 float beforeNow = (now.get(Calendar.HOUR_OF_DAY)+now.get(Calendar.MINUTE)/60.0f)*mHourHeight;
                 canvas.drawLine(start, startY+beforeNow, startPixel + mWidthPerDay, startY+beforeNow, mNowLinePaint);
             }
@@ -1131,7 +1131,7 @@ public class WeekView extends View {
 
                 @Override
                 public String interpretTime(int hour) {
-                    Calendar calendar = Calendar.getInstance();
+                    Calendar calendar = Calendar.getInstance(Locale.getDefault());
                     calendar.set(Calendar.HOUR_OF_DAY, hour);
                     calendar.set(Calendar.MINUTE, 0);
 
@@ -1525,7 +1525,7 @@ public class WeekView extends View {
      * Show today on the week view.
      */
     public void goToToday() {
-        Calendar today = Calendar.getInstance();
+        Calendar today = Calendar.getInstance(Locale.getDefault());
         goToDate(today);
     }
 
@@ -1547,7 +1547,7 @@ public class WeekView extends View {
 
         mRefreshEvents = true;
 
-        Calendar today = Calendar.getInstance();
+        Calendar today = Calendar.getInstance(Locale.getDefault());
         today.set(Calendar.HOUR_OF_DAY, 0);
         today.set(Calendar.MINUTE, 0);
         today.set(Calendar.SECOND, 0);
@@ -1701,7 +1701,7 @@ public class WeekView extends View {
      * @return the calendar instance
      */
     private Calendar today(){
-        Calendar today = Calendar.getInstance();
+        Calendar today = Calendar.getInstance(Locale.getDefault());
         today.set(Calendar.HOUR_OF_DAY, 0);
         today.set(Calendar.MINUTE, 0);
         today.set(Calendar.SECOND, 0);
